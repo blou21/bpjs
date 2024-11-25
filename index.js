@@ -6,11 +6,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Menggunakan express untuk menyajikan file statis (seperti index.html)
-app.use(express.static(path.join(__dirname, 'BANSOSIDN24-25')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Menyajikan index.html untuk permintaan ke root ("/")
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'BANSOSIDN24-25', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Mulai server
