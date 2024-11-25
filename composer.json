@@ -1,0 +1,8 @@
+{
+    "name": "my-app",
+    "description": "A PHP application",
+    "require": {
+      "php": ">=7.4"
+    }
+  }
+  
