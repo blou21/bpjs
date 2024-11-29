@@ -1,19 +1,17 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-
-// Tentukan port untuk aplikasi
 const port = process.env.PORT || 3000;
 
-// Menggunakan express untuk menyajikan file statis (seperti index.html)
+// Serve static files from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Menyajikan index.html untuk permintaan ke root ("/")
+// Serve the index.html file when visiting the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Mulai server
+// Start the server
 app.listen(port, () => {
-  console.log(`Server berjalan di http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
 });
