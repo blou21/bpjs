@@ -1,5 +1,5 @@
 {
-    "name": "app11-bansos-claim-500",
+    "name": "myvendor/my-project",
     "description": "A PHP application",
     "require": {
       "php": ">=7.4"
