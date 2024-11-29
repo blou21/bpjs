@@ -1,5 +1,5 @@
 {
-    "name": "bansosidn24-25",
+    "name": "app11-bansos-claim-500",
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
@@ -11,5 +11,6 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "devDependencies": {},
     "description": ""
 }
