@@ -20,3 +20,6 @@ Thumbs.db
 
 # MacOS specific files
 *.swp
+
+node_modules/
+
