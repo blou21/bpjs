@@ -1,8 +1,0 @@
-{
-    "name": "app11-bansos-claim-500",
-    "version": "1.0.0",
-    "scripts": {
-      "start": "node index.js"
-    }
-  }
-  
